@@ -1,0 +1,432 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version T-2022.03-SP2 for linux64 - May 25, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+set DESIGN_NAME spi_rx 
+spi_rx
+set RTL_PATH ../../src
+../../src
+set search_path "$search_path \
+                 ../../library/tech/dc/ \
+                "
+. /home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/libraries/syn /home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/dw/syn_ver /home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/dw/sim_ver  ../../library/tech/dc/  
+set target_library "saed32rvt_tt0p85v25c.db "
+saed32rvt_tt0p85v25c.db 
+set symbol_library "saed32rvt_tt0p85v25c.db "
+saed32rvt_tt0p85v25c.db 
+set link_library   "* saed32rvt_tt0p85v25c.db "
+* saed32rvt_tt0p85v25c.db 
+analyze -format sverilog -define { ASIC_CLOCK_GATING} $RTL_PATH/spi_rx.sv
+Running PRESTO HDLC
+Compiling source file ../../src/spi_rx.sv
+Presto compilation completed successfully.
+Loading db file '/home/jjt/lab2/library/tech/dc/saed32rvt_tt0p85v25c.db'
+Information: Using CCS timing libraries. (TIM-024)
+1
+elaborate $DESIGN_NAME 
+Loading db file '/home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/libraries/syn/gtech.db'
+Loading db file '/home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/libraries/syn/standard.sldb'
+  Loading link library 'saed32rvt_tt0p85v25c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Statistics for case statements in always block at line 50 in file
+	'../../src/spi_rx.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            60            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine spi_rx line 31 in file
+		'../../src/spi_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    cs_sync2_reg     | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+|    sck_sync1_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    sck_sync2_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|    cs_sync1_reg     | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine spi_rx line 50 in file
+		'../../src/spi_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rx_valid_r_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    bit_count_reg    | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    shift_reg_reg    | Flip-flop |   7   |  Y  | N  | Y  | N  | N  | N  | N  |
+|    rx_data_r_reg    | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (spi_rx)
+Elaborated 1 design.
+Current design is now 'spi_rx'.
+1
+current_design $DESIGN_NAME 
+Current design is 'spi_rx'.
+{spi_rx}
+link 
+
+  Linking design 'spi_rx'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  spi_rx                      /home/jjt/lab2/dc/work/spi_rx.db
+  saed32rvt_tt0p85v25c (library) /home/jjt/lab2/library/tech/dc/saed32rvt_tt0p85v25c.db
+
+1
+create_clock -name "clk" -period 5 [get_ports clk]
+1
+set_clock_uncertainty -setup 0.1 [all_clocks] 
+1
+set_clock_transition 0.1 [all_clocks] 
+1
+set_clock_latency 0.2 [all_clocks] 
+1
+set_timing_derate -early 0.9 
+1
+set_timing_derate -late 1.1 
+1
+set_clock_gating_style -control_point before -control_signal scan_enable 
+
+Current clock gating style....
+Sequential cell: latch
+Minimum bank bitwidth: 3
+Minimum bank bitwidth for enhanced clock gating: 6
+Maximum fanout: unlimited
+Setup time for clock gate: 0.000000
+Hold time for clock gate: 0.000000
+Clock gating circuitry (positive edge): and
+Clock gating circuitry (negative edge): or
+ Note: inverter between clock gating circuitry 
+       and (negative edge) register clock pin.
+Control point insertion: before
+Control signal for control point: scan_enable
+Observation point insertion: false
+Observation logic depth: 5
+1
+set_max_transition 0.4 [current_design]
+Current design is 'spi_rx'.
+1
+set_max_fanout 60 [current_design]
+Current design is 'spi_rx'.
+1
+set_max_area 0
+1
+set_fix_hold [all_clocks] 
+1
+set_fix_multiple_port_nets -buffer_constants -all 
+1
+compile_ultra -no_autoungroup -gate_clock 
+Loading db file '/home/jjt/install/synopsys/dc/syn/T-2022.03-SP2/libraries/syn/dw_foundation.sldb'
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | T-2022.03-DWBB_202203.2 |     *     |
+| Licensed DW Building Blocks        | T-2022.03-DWBB_202203.2 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra -no_autoungroup -gate_clock                                         |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 64                                     |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 25                                     |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 1                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 18                                     |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -all -buffer_constants                 |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 2 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'spi_rx'
+
+Loaded alib file './alib-52/saed32rvt_tt0p85v25c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'spi_rx'
+Information: Added key list 'DesignWare' to design 'spi_rx'. (DDB-72)
+  Processing 'SNPS_CLOCK_GATE_HIGH_spi_rx_0'
+Warning: No negative phase latch in library for Cell latch. The clock phase would be changed. (OPT-1231)
+Memory usage for J1 task 244 Mbytes -- main task 244 Mbytes.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_tt0p85v25c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_spi_rx_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design SNPS_CLOCK_GATE_HIGH_spi_rx_1, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design spi_rx. (PWR-730)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:02     288.5      0.00       0.0       0.0                           6323612.0000      0.00  
+    0:00:02     288.5      0.00       0.0       0.0                           6323612.0000      0.00  
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+No inverter cells compatible for Numerical Synthesis
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:02     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+
+Threshold voltage group cell usage:
+>> saed32cell_svt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+    0:00:03     235.1      0.00       0.0       0.0                           5883057.0000      0.00  
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+set REPORTS reports_$DESIGN_NAME 
+reports_spi_rx
+set SYN_FILES syn_files_$DESIGN_NAME
+syn_files_spi_rx
+file delete -force $REPORTS 
+file delete -force $SYN_FILES
+file mkdir $REPORTS 
+file mkdir $SYN_FILES 
+report_power -hierarchy > $REPORTS/$DESIGN_NAME.hierarchy.power 
+report_power > $REPORTS/$DESIGN_NAME.power 
+report_area -hierarchy > $REPORTS/$DESIGN_NAME.area 
+report_timing -delay_type max > $REPORTS/$DESIGN_NAME.max.timing
+report_timing -delay_type min > $REPORTS/$DESIGN_NAME.min.timing
+report_constraint -verbose > $REPORTS/$DESIGN_NAME.constraint
+report_constraint -all_violators > $REPORTS/$DESIGN_NAME.violation
+# Ouptut the results
+write -h $DESIGN_NAME -output ./$SYN_FILES/$DESIGN_NAME.db
+Writing ddc file './syn_files_spi_rx/spi_rx.db'.
+1
+write_file -format ddc -hierarchy -output ./$SYN_FILES/$DESIGN_NAME.ddc
+Writing ddc file './syn_files_spi_rx/spi_rx.ddc'.
+1
+# Delays in SDF format for Verilog simulation
+write_sdf -context verilog -version 1.0 ../../results/$DESIGN_NAME.syn.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/jjt/lab2/results/spi_rx.syn.sdf'. (WT-3)
+1
+# The post-syn Verilog netlist
+write -h -f verilog $DESIGN_NAME -output ../../results/$DESIGN_NAME.syn.v -pg
+Warning: No PG information is available for design. (UPF-663)
+Writing verilog file '/home/jjt/lab2/results/spi_rx.syn.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+# Constraints in SDC format, for APR
+write_sdc ../../results/$DESIGN_NAME.sdc
+1
+1
+dc_shell> 

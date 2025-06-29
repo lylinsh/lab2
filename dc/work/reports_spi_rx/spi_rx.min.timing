@@ -1,0 +1,48 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : spi_rx
+Version: T-2022.03-SP2
+Date   : Sun Jun 29 20:16:22 2025
+****************************************
+
+Operating Conditions: tt0p85v25c   Library: saed32rvt_tt0p85v25c
+Wire Load Model Mode: enclosed
+
+  Startpoint: clk_gate_bit_count_reg/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: clk_gate_bit_count_reg/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_spi_rx_0
+                     ForQA                 saed32rvt_tt0p85v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  2.50       2.50
+  clock network delay (ideal)                             0.20       2.70
+  clk_gate_bit_count_reg/latch/CLK (LATCHX1_RVT)          0.00       2.70 r
+  clk_gate_bit_count_reg/latch/Q (LATCHX1_RVT)            0.09       2.79 f
+  clk_gate_bit_count_reg/main_gate/A1 (AND2X1_RVT)        0.01       2.80 f
+  data arrival time                                                  2.80
+
+  clock clk (fall edge)                                   2.50       2.50
+  clock network delay (ideal)                             0.20       2.70
+  clk_gate_bit_count_reg/main_gate/A2 (AND2X1_RVT)        0.00       2.70 f
+  clock gating hold time                                  0.00       2.70
+  data required time                                                 2.70
+  --------------------------------------------------------------------------
+  data required time                                                 2.70
+  data arrival time                                                 -2.80
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.10
+
+
+1

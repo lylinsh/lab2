@@ -1,0 +1,19 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : spi_rx
+Version: T-2022.03-SP2
+Date   : Sun Jun 29 20:16:22 2025
+****************************************
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   spi_rx                       0.00         270.15        -270.15  (VIOLATED)
+
+
+1

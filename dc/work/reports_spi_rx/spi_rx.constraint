@@ -1,0 +1,133 @@
+ 
+****************************************
+Report : constraint
+        -verbose
+Design : spi_rx
+Version: T-2022.03-SP2
+Date   : Sun Jun 29 20:16:22 2025
+****************************************
+
+
+  Startpoint: bit_count_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: clk_gate_rx_data_r_reg/latch
+            (positive level-sensitive latch clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  spi_rx             8000                  saed32rvt_tt0p85v25c
+  SNPS_CLOCK_GATE_HIGH_spi_rx_1
+                     ForQA                 saed32rvt_tt0p85v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.20       0.20
+  bit_count_reg[0]/CLK (DFFARX1_RVT)                      0.00       0.20 r
+  bit_count_reg[0]/Q (DFFARX1_RVT)                        0.22       0.42 r
+  U24/Y (NAND2X0_RVT)                                     0.06       0.48 f
+  U25/Y (INVX1_RVT)                                       0.05       0.53 r
+  U27/Y (NAND4X0_RVT)                                     0.09       0.62 f
+  U28/Y (INVX1_RVT)                                       0.07       0.70 r
+  clk_gate_rx_data_r_reg/test_or/Y (OR2X1_RVT)            0.08       0.78 r
+  clk_gate_rx_data_r_reg/latch/D (LATCHX1_RVT)            0.02       0.79 r
+  data arrival time                                                  0.79
+
+  clock clk' (rise edge)                                  2.50       2.50
+  clock network delay (ideal)                             0.20       2.70
+  clock uncertainty                                      -0.10       2.60
+  clk_gate_rx_data_r_reg/latch/CLK (LATCHX1_RVT)          0.00       2.60 r
+  time borrowed from endpoint                             0.00       2.60
+  data required time                                                 2.60
+  --------------------------------------------------------------------------
+  data required time                                                 2.60
+  data arrival time                                                 -0.79
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.81
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clk' nominal pulse width                                2.50   
+  library setup time                                     -0.01   
+  --------------------------------------------------------------
+  max time borrow                                         2.49   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: clk_gate_bit_count_reg/latch
+              (positive level-sensitive latch clocked by clk')
+  Endpoint: clk_gate_bit_count_reg/main_gate
+            (gating element for clock clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  SNPS_CLOCK_GATE_HIGH_spi_rx_0
+                     ForQA                 saed32rvt_tt0p85v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk' (rise edge)                                  2.50       2.50
+  clock network delay (ideal)                             0.20       2.70
+  clk_gate_bit_count_reg/latch/CLK (LATCHX1_RVT)          0.00       2.70 r
+  clk_gate_bit_count_reg/latch/Q (LATCHX1_RVT)            0.09       2.79 f
+  clk_gate_bit_count_reg/main_gate/A1 (AND2X1_RVT)        0.01       2.80 f
+  data arrival time                                                  2.80
+
+  clock clk (fall edge)                                   2.50       2.50
+  clock network delay (ideal)                             0.20       2.70
+  clk_gate_bit_count_reg/main_gate/A2 (AND2X1_RVT)        0.00       2.70 f
+  clock gating hold time                                  0.00       2.70
+  data required time                                                 2.70
+  --------------------------------------------------------------------------
+  data required time                                                 2.70
+  data arrival time                                                 -2.80
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.10
+
+
+    Net: n24
+
+    max_transition         0.40
+  - Transition Time        0.08
+  ------------------------------
+    Slack                  0.32  (MET)
+
+
+    Net: reset_n
+
+    max_fanout            60.00
+  - Fanout                 4.37
+  ------------------------------
+    Slack                 55.63  (MET)
+
+
+    Net: state[0]
+
+    max_capacitance      208.00
+  - Capacitance            2.47
+  ------------------------------
+    Slack                205.53  (MET)
+
+
+    Design: spi_rx
+
+    max_area               0.00
+  - Current Area         270.15
+  ------------------------------
+    Slack               -270.15  (VIOLATED)
+
+
+Min pulse width constraints
+
+                       Required      Actual
+  Pin                pulse width   pulse width   Slack           Scenario
+--------------------------------------------------------------------------------
+  cs_sync1_reg/CLK(high)
+                      0.08          2.40          2.32 (MET)
+
+1

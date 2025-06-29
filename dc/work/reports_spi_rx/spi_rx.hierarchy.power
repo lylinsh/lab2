@@ -1,0 +1,44 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : spi_rx
+Version: T-2022.03-SP2
+Date   : Sun Jun 29 20:16:22 2025
+****************************************
+
+
+Library(s) Used:
+
+    saed32rvt_tt0p85v25c (File: /home/jjt/lab2/library/tech/dc/saed32rvt_tt0p85v25c.db)
+
+
+Operating Conditions: tt0p85v25c   Library: saed32rvt_tt0p85v25c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+spi_rx                 8000              saed32rvt_tt0p85v25c
+SNPS_CLOCK_GATE_HIGH_spi_rx_0
+                       ForQA             saed32rvt_tt0p85v25c
+SNPS_CLOCK_GATE_HIGH_spi_rx_1
+                       ForQA             saed32rvt_tt0p85v25c
+
+
+Global Operating Voltage = 0.85 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+spi_rx                                    0.316    2.720 5.88e+06    8.919 100.0
+1

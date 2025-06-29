@@ -1,0 +1,8 @@
+************************
+*   CORNER.txt         *
+************************
+CORNER_NAME: nominal
+TCAD_GRD_FILE: ../library/tech/starrc/saed32nm_1p9m_nominal.nxtgrd
+OPERATING_TEMPERATURE: 25
+
+
